@@ -21,9 +21,8 @@ AR_NAME = libac.a
 #           Compile and link flags
 #
 #############################################################################
-PREFIX = /usr/local
 LUA_VERSION := 5.1
-PREFIX = /usr/local
+PREFIX = /usr
 LUA_INCLUDE_DIR := $(PREFIX)/include/lua$(LUA_VERSION)
 SO_TARGET_DIR := $(PREFIX)/lib/lua/$(LUA_VERSION)
 LUA_TARGET_DIR := $(PREFIX)/share/lua/$(LUA_VERSION)
