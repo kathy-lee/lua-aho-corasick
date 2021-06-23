@@ -1,4 +1,5 @@
 OS := $(shell uname)
+ARCH := $(shell uname -p)
 
 ifeq ($(OS), Darwin)
     SO_EXT := dylib
@@ -32,7 +33,11 @@ LUA_TARGET_DIR := $(PREFIX)/share/lua/$(LUA_VERSION)
 # -DVERIFY : To verify if the slow-version and fast-version implementations
 #            get exactly the same result. Note -DVERIFY implies -DDEBUG.
 #
-CFLAGS = -msse2 -msse3 -msse4.1 -O3 #-g -DVERIFY
+ifeq ($(ARCH), arm64)
+    CFLAGS = -O3
+else
+    CFLAGS = -msse2 -msse3 -msse4.1 -O3 #-g -DVERIFY
+endif
 COMMON_FLAGS = -fvisibility=hidden -Wall $(CFLAGS) $(MY_CFLAGS) $(MY_CXXFLAGS)
 
 SO_CXXFLAGS = $(COMMON_FLAGS) -fPIC
