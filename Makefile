@@ -38,6 +38,7 @@ ifeq ($(ARCH), arm64)
 else
     CFLAGS = -msse2 -msse3 -msse4.1 -O3 #-g -DVERIFY
 endif
+
 COMMON_FLAGS = -fvisibility=hidden -Wall $(CFLAGS) $(MY_CFLAGS) $(MY_CXXFLAGS)
 
 SO_CXXFLAGS = $(COMMON_FLAGS) -fPIC
